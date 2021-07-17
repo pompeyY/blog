@@ -4,8 +4,8 @@
 
 # Site
 title: Pompeyy Blog
-subtitle: ''
-description: ''
+subtitle: '日常记录'
+description: '小成靠智，大成靠德'
 keywords:
 author: Pompeyy
 language: zh-Hans
@@ -103,3 +103,9 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
