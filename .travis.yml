@@ -18,6 +18,3 @@ deploy:
   on:
     branch: master
   local-dir: public
-  
-after_success:
-  - echo "lightmoon.pw" > CNAME
