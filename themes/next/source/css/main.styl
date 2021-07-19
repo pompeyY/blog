@@ -47,13 +47,16 @@ for $inject_style in hexo-config('injects.style')
   @import $inject_style;
 
 // 主页文章添加阴影效果
-.content {
-//  margin-top: 60px;
+.aritcleBox {
+  margin-top: 60px;
   // margin-bottom: 60px;
   padding: 25px;
   box-shadow: 0 0 5px rgba(202, 203, 203, .5);
   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+.aritcleBox:first-child {
+  margin-top: 0px;
 }
 
 

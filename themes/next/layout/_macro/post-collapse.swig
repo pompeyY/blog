@@ -10,7 +10,7 @@
       <span class="collection-header">{{ current_year }}</span>
     </div>
   {%- endif %}
-
+  
   <article itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
@@ -36,6 +36,5 @@
 
     </header>
   </article>
-
 {%- endfor %}
 {% endmacro %}
