@@ -57,19 +57,19 @@
   <entry>
     <title>git常用命令</title>
     <url>/2021/07/19/record/gitRecord/</url>
-    <content><![CDATA[<h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag                             <span class="comment"># 查看tag</span></span><br><span class="line">git tag -a v1.0 -m <span class="string">&#x27;some comments&#x27;</span>  <span class="comment"># 创建</span></span><br><span class="line">git push origin --tags              <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a>git tag</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag                             <span class="comment"># 查看tag</span></span><br><span class="line">git tag -a v1.0 -m <span class="string">&#x27;some comments&#x27;</span>  <span class="comment"># 创建</span></span><br><span class="line">git push origin --tags              <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure>
 <!-- > git branch -a 查看所有分支
 > git branch -d 分支名   （删除本地分支） -->
 
-<h3 id="同步远程分支"><a href="#同步远程分支" class="headerlink" title="同步远程分支"></a>同步远程分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote update origin -p</span><br></pre></td></tr></table></figure>
+<h2 id="同步远程分支"><a href="#同步远程分支" class="headerlink" title="同步远程分支"></a>同步远程分支</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote update origin -p</span><br></pre></td></tr></table></figure>
 
-<h3 id="在本地目录下关联远程repository"><a href="#在本地目录下关联远程repository" class="headerlink" title="在本地目录下关联远程repository"></a>在本地目录下关联远程repository</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@github.com:git_username/repository_name.git</span><br></pre></td></tr></table></figure>
+<h2 id="在本地目录下关联远程repository"><a href="#在本地目录下关联远程repository" class="headerlink" title="在本地目录下关联远程repository"></a>在本地目录下关联远程repository</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@github.com:git_username/repository_name.git</span><br></pre></td></tr></table></figure>
 
-<h3 id="取消本地目录下关联的远程库"><a href="#取消本地目录下关联的远程库" class="headerlink" title="取消本地目录下关联的远程库"></a>取消本地目录下关联的远程库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
+<h2 id="取消本地目录下关联的远程库"><a href="#取消本地目录下关联的远程库" class="headerlink" title="取消本地目录下关联的远程库"></a>取消本地目录下关联的远程库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
 
-<h3 id="git-LF-CRLF默认设置"><a href="#git-LF-CRLF默认设置" class="headerlink" title="git LF CRLF默认设置"></a>git LF CRLF默认设置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="git-LF-CRLF默认设置"><a href="#git-LF-CRLF默认设置" class="headerlink" title="git LF CRLF默认设置"></a>git LF CRLF默认设置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="git长期存储密码"><a href="#git长期存储密码" class="headerlink" title="git长期存储密码"></a>git长期存储密码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+<h2 id="git长期存储密码"><a href="#git长期存储密码" class="headerlink" title="git长期存储密码"></a>git长期存储密码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>记录</category>
