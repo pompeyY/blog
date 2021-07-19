@@ -2,10 +2,12 @@
 <search>
   <entry>
     <title>前端日常记录</title>
-    <url>/2021/07/19/frontendRecord/</url>
-    <content><![CDATA[<h1 id="让移动端滑动更加顺畅"><a href="#让移动端滑动更加顺畅" class="headerlink" title="让移动端滑动更加顺畅"></a>让移动端滑动更加顺畅</h1><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br></pre></td></tr></table></figure>
+    <url>/2021/07/19/record/frontendRecord/</url>
+    <content><![CDATA[<h2 id="让移动端滑动更加顺畅"><a href="#让移动端滑动更加顺畅" class="headerlink" title="让移动端滑动更加顺畅"></a>让移动端滑动更加顺畅</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br></pre></td></tr></table></figure>
 
-<h2 id="溢出…"><a href="#溢出…" class="headerlink" title="溢出…"></a>溢出…</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 多行溢出 */</span></span><br><span class="line"><span class="attribute">overflow</span> : hidden;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 单行溢出*/</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure>
+<h2 id="react项目启动用https的命令"><a href="#react项目启动用https的命令" class="headerlink" title="react项目启动用https的命令"></a>react项目启动用https的命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="variable">$env</span>:HTTPS = <span class="string">&quot;true&quot;</span>) -and (npm start)</span><br></pre></td></tr></table></figure>
+
+<h2 id="文本溢出-省略号"><a href="#文本溢出-省略号" class="headerlink" title="文本溢出 省略号"></a>文本溢出 省略号</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 多行溢出 */</span></span><br><span class="line"><span class="attribute">overflow</span> : hidden;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 单行溢出*/</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure>
 
 <!-- [webpck HYPERLINK "https://segmentfault.com/q/1010000009360389"是不是不能编译这个属性 HYPERLINK "https://segmentfault.com/q/1010000009360389"-webkit-box-orient: vertical](https://segmentfault.com/q/1010000009360389)需要加上下面这段 -->
 <blockquote>
@@ -41,43 +43,39 @@
 
 <h2 id="Nginx-常用配置"><a href="#Nginx-常用配置" class="headerlink" title="Nginx 常用配置:"></a>Nginx 常用配置:</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">server</span> &#123;</span><br><span class="line">  <span class="string">listen</span>  <span class="number">80</span><span class="string">;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">#   server_name</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">root</span> <span class="string">/data/web/happy-pig;</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">error_log</span> <span class="string">/root/nginx_err.log;</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">/</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="string">try_files</span> <span class="string">$uri</span> <span class="string">@fallback;</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">/happy_pig/api/</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Real-IP</span> <span class="string">$remote_addr;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Forward-For</span> <span class="string">$proxy_add_x_forwarded_for;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">Host</span> <span class="string">$http_host;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Nginx-Proxy</span> <span class="literal">true</span><span class="string">;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#       proxy_redirect   off;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_pass</span> [<span class="string">http://127.0.0.1:8081</span>]<span class="string">(http://127.0.0.1:8081/);</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">@fallback</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="string">rewrite</span> <span class="string">.*</span> <span class="string">/index.html</span> <span class="string">break;</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>eventloop： 讲解 <a href="https://juejin.im/post/5c9a43175188252d876e5903">https://juejin.im/post/5c9a43175188252d876e5903</a></p>
-<p><strong>react项目启动用https的命令：</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="variable">$env</span>:HTTPS = <span class="string">&quot;true&quot;</span>) -and (npm start)</span><br></pre></td></tr></table></figure>
-<h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag                             <span class="comment"># 查看tag</span></span><br><span class="line">git tag -a v1.0 -m <span class="string">&#x27;some comments&#x27;</span>  <span class="comment"># 创建</span></span><br><span class="line">git push origin --tags              <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure>
+<h2 id="eventloop"><a href="#eventloop" class="headerlink" title="eventloop"></a>eventloop</h2><blockquote>
+<p><a href="https://juejin.im/post/5c9a43175188252d876e5903">参考链接 https://juejin.im/post/5c9a43175188252d876e5903</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git常用命令</title>
+    <url>/2021/07/19/record/gitRecord/</url>
+    <content><![CDATA[<h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag                             <span class="comment"># 查看tag</span></span><br><span class="line">git tag -a v1.0 -m <span class="string">&#x27;some comments&#x27;</span>  <span class="comment"># 创建</span></span><br><span class="line">git push origin --tags              <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure>
 <!-- > git branch -a 查看所有分支
 > git branch -d 分支名   （删除本地分支） -->
 
-<blockquote>
-<p>同步远程分支</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote update origin -p</span><br></pre></td></tr></table></figure>
+<h3 id="同步远程分支"><a href="#同步远程分支" class="headerlink" title="同步远程分支"></a>同步远程分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote update origin -p</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>在本地目录下关联远程repository </p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@github.com:git_username/repository_name.git</span><br></pre></td></tr></table></figure>
+<h3 id="在本地目录下关联远程repository"><a href="#在本地目录下关联远程repository" class="headerlink" title="在本地目录下关联远程repository"></a>在本地目录下关联远程repository</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@github.com:git_username/repository_name.git</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>取消本地目录下关联的远程库</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
+<h3 id="取消本地目录下关联的远程库"><a href="#取消本地目录下关联的远程库" class="headerlink" title="取消本地目录下关联的远程库"></a>取消本地目录下关联的远程库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>git LF CRLF默认设置</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="git-LF-CRLF默认设置"><a href="#git-LF-CRLF默认设置" class="headerlink" title="git LF CRLF默认设置"></a>git LF CRLF默认设置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>git长期存储密码</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+<h3 id="git长期存储密码"><a href="#git长期存储密码" class="headerlink" title="git长期存储密码"></a>git长期存储密码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>record</category>
+        <category>记录</category>
       </categories>
       <tags>
-        <tag>other</tag>
+        <tag>其他</tag>
       </tags>
   </entry>
 </search>
