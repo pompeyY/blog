@@ -1,29 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/07/17/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>前端日常记录</title>
+    <url>/2021/07/19/frontendRecord/</url>
+    <content><![CDATA[<h1 id="让移动端滑动更加顺畅"><a href="#让移动端滑动更加顺畅" class="headerlink" title="让移动端滑动更加顺畅"></a>让移动端滑动更加顺畅</h1><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="溢出…"><a href="#溢出…" class="headerlink" title="溢出…"></a>溢出…</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 多行溢出 */</span></span><br><span class="line"><span class="attribute">overflow</span> : hidden;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 单行溢出*/</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<!-- [webpck HYPERLINK "https://segmentfault.com/q/1010000009360389"是不是不能编译这个属性 HYPERLINK "https://segmentfault.com/q/1010000009360389"-webkit-box-orient: vertical](https://segmentfault.com/q/1010000009360389)需要加上下面这段 -->
+<blockquote>
+<p>多行溢出不生效 可能情况webpack原因：</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*! autoprefixer: off */</span></span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line"><span class="comment">/* autoprefixer: on */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 或者 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*! autoprefixer: ignore next */</span></span><br><span class="line">-webkit-box-orient: vertical;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>参考文档<a href="https://segmentfault.com/q/1010000009360389">https://segmentfault.com/q/1010000009360389</a></p>
+<h2 id="缩短网址http-dwz-cn"><a href="#缩短网址http-dwz-cn" class="headerlink" title="缩短网址http://dwz.cn"></a>缩短网址<a href="http://dwz.cn/">http://dwz.cn</a></h2><h2 id="IOS-问题"><a href="#IOS-问题" class="headerlink" title="IOS 问题"></a>IOS 问题</h2><blockquote>
+<p>Iphone 禁止浏览器弹性滚动<br>Iphone 禁止浏览器弹性滚动  给最外层的盒子上加上 touch-action:none;<br>如果还是不行就给body加个 height：100%;</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">&#x27;touchmove&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.preventDefault() <span class="comment">// 阻止默认的处理方式(阻止下拉滑动的效果)</span></span><br><span class="line">&#125;, &#123;<span class="attr">passive</span>: <span class="literal">false</span>&#125;) <span class="comment">// passive 参数不能省略，用来兼容ios和android</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="string">&#x27;afdasdf&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bbbb</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ios键盘弹出导致失去焦点问题</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">hanldeBlur = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scrollHeight = <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop || <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="built_in">Math</span>.max(scrollHeight - <span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><code>husky lint-staged</code></p>
+<p>这两个包在windows下安装必须用npm 不能用cnpm否则无效</p>
+<blockquote>
+<p>ios <code>active伪类失效</code> 解决方案</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ontouchstart</span>=<span class="string">&quot;&quot;</span> <span class="attr">onmouseover</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>YYYY-MM-DD 这种日期格式在转换时 ios上会出问题 建议用 YYYY/MM/DD</p>
+</blockquote>
+<blockquote>
+<p>safari 在低版本对箭头函数的嵌套支持不好 会卡死</p>
+</blockquote>
+<h2 id="Chrome-浏览器目标填写"><a href="#Chrome-浏览器目标填写" class="headerlink" title="Chrome 浏览器目标填写"></a>Chrome 浏览器目标填写</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- -args --disable-web-security --enable-easy-off-store-extension-install --args --disable-web-security --user-data-dir</span><br><span class="line">- -args --disable-web-security --user-data-dir</span><br></pre></td></tr></table></figure>
+
+<h2 id="Nginx-常用配置"><a href="#Nginx-常用配置" class="headerlink" title="Nginx 常用配置:"></a>Nginx 常用配置:</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">server</span> &#123;</span><br><span class="line">  <span class="string">listen</span>  <span class="number">80</span><span class="string">;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">#   server_name</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">root</span> <span class="string">/data/web/happy-pig;</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">error_log</span> <span class="string">/root/nginx_err.log;</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">/</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="string">try_files</span> <span class="string">$uri</span> <span class="string">@fallback;</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">/happy_pig/api/</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Real-IP</span> <span class="string">$remote_addr;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Forward-For</span> <span class="string">$proxy_add_x_forwarded_for;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">Host</span> <span class="string">$http_host;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Nginx-Proxy</span> <span class="literal">true</span><span class="string">;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#       proxy_redirect   off;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_pass</span> [<span class="string">http://127.0.0.1:8081</span>]<span class="string">(http://127.0.0.1:8081/);</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">@fallback</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="string">rewrite</span> <span class="string">.*</span> <span class="string">/index.html</span> <span class="string">break;</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>eventloop： 讲解 <a href="https://juejin.im/post/5c9a43175188252d876e5903">https://juejin.im/post/5c9a43175188252d876e5903</a></p>
+<p><strong>react项目启动用https的命令：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="variable">$env</span>:HTTPS = <span class="string">&quot;true&quot;</span>) -and (npm start)</span><br></pre></td></tr></table></figure>
+<h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag                             <span class="comment"># 查看tag</span></span><br><span class="line">git tag -a v1.0 -m <span class="string">&#x27;some comments&#x27;</span>  <span class="comment"># 创建</span></span><br><span class="line">git push origin --tags              <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure>
+<!-- > git branch -a 查看所有分支
+> git branch -d 分支名   （删除本地分支） -->
+
+<blockquote>
+<p>同步远程分支</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote update origin -p</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在本地目录下关联远程repository </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin git@github.com:git_username/repository_name.git</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>取消本地目录下关联的远程库</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>git LF CRLF默认设置</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>git长期存储密码</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Test</category>
+        <category>record</category>
       </categories>
       <tags>
-        <tag>JS</tag>
+        <tag>other</tag>
       </tags>
   </entry>
 </search>

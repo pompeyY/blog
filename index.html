@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -87,19 +94,17 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/avatar.jpg?v=5.1.2" />
 
 
 
 
 
 
-<meta name="description" content="小成靠智，大成靠德">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pompeyy Blog">
 <meta property="og:url" content="https://pompeyy.github.io/index.html">
 <meta property="og:site_name" content="Pompeyy Blog">
-<meta property="og:description" content="小成靠智，大成靠德">
 <meta property="og:locale">
 <meta property="article:author" content="Pompeyy">
 <meta name="twitter:card" content="summary">
@@ -111,7 +116,7 @@
   var CONFIG = {
     root: '',
     scheme: 'Gemini',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -135,6 +140,20 @@
 
 
 
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://www.pompeyy.top/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
 
 
   <title>Pompeyy Blog</title>
@@ -180,7 +199,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">日常记录</p>
+        <p class="site-subtitle">小成靠智，大成靠德</p>
       
   </div>
 
@@ -306,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pompeyy.github.io/2021/07/17/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://pompeyy.github.io/2021/07/19/frontendRecord/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -325,7 +344,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/07/17/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2021/07/19/frontendRecord/" itemprop="url">前端日常记录</a></h1>
         
 
         <div class="post-meta">
@@ -337,8 +356,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-17T17:08:52+00:00">
-                2021-07-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-19T06:47:59+00:00">
+                2021-07-19
               </time>
             
 
@@ -360,8 +379,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Test/" itemprop="url" rel="index">
-                    <span itemprop="name">Test</span>
+                  <a href="/categories/record/" itemprop="url" rel="index">
+                    <span itemprop="name">record</span>
                   </a>
                 </span>
 
@@ -376,6 +395,8 @@
           
 
           
+          
+
           
 
           
@@ -399,23 +420,17 @@
       
         
           
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+          让移动端滑动更加顺畅1-webkit-overflow-scrolling: touch;
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="string">&#x27;afdasdf&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bbbb</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-          
+溢出…1234567891011/* 多行溢出 */overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-c
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/07/19/frontendRecord/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -569,7 +584,18 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2021</span>
@@ -580,18 +606,11 @@
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
 <div class="theme-info">
-  主题 -
-  <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Gemini
-  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共555字</span>
 </div>
-
-
         
 
         
@@ -601,6 +620,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -625,6 +646,8 @@
 
   
 
+
+  
 
 
 
@@ -653,6 +676,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
