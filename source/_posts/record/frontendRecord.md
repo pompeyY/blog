@@ -6,7 +6,7 @@ tags:
 # password: 123456
 # abstract: 加密文章，请输入密码 123456 查看
 # message: 请输入密码
-top: 10
+top: 100
 ---
 
 ## 让移动端滑动更加顺畅
