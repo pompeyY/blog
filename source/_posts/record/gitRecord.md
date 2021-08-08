@@ -11,16 +11,16 @@ top: 98
 ## git tag
 
 ```bash
-  git tag                             # 查看tag
-  git tag -a v1.0 -m 'some comments'  # 创建
-  git push origin --tags              # 提交
+  git tag                             # 查看tag
+  git tag -a v1.0 -m 'some comments'  # 创建
+  git push origin --tags              # 提交
 ```
-<!-- > git branch -a 查看所有分支
-> git branch -d 分支名   （删除本地分支） -->
+<!-- > git branch -a 查看所有分支
+> git branch -d 分支名   （删除本地分支） -->
 
 ## 同步远程分支
 ```bash
-git remote update origin -p
+git remote update origin -p
 ```
 
 ## 在本地目录下关联远程repository 

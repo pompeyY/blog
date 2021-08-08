@@ -13,3 +13,8 @@ top: 99
 ```bash
 ps aux|head -1;ps aux|grep -v PID|sort -rn -k +3|head
 ```
+
+## linux 设置PS1
+```bash
+PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u:\[\033[01;34m\]\W\[\033[00m\]\$'
+```

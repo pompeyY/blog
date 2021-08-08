@@ -39,9 +39,9 @@ top: 100
 <!-- [webpck HYPERLINK "https://segmentfault.com/q/1010000009360389"是不是不能编译这个属性 HYPERLINK "https://segmentfault.com/q/1010000009360389"-webkit-box-orient: vertical](https://segmentfault.com/q/1010000009360389)需要加上下面这段 -->
 > 多行溢出不生效 可能情况webpack原因：
 ```CSS
-  /*! autoprefixer: off */
-  -webkit-box-orient: vertical;
-  /* autoprefixer: on */
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
 
   /* 或者 */
 
@@ -56,7 +56,7 @@ top: 100
 ## IOS 问题
 
 > Iphone 禁止浏览器弹性滚动
-Iphone 禁止浏览器弹性滚动  给最外层的盒子上加上 touch-action:none;
+Iphone 禁止浏览器弹性滚动  给最外层的盒子上加上 touch-action:none;
 如果还是不行就给body加个 height：100%;
 
 ```jsx
@@ -67,11 +67,11 @@ document.body.addEventListener('touchmove', function (e) {
 
 > ios键盘弹出导致失去焦点问题
 ```jsx
-  hanldeBlur = () => {
-    setTimeout(function() {
-    var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
-    window.scrollTo(0, Math.max(scrollHeight - 1, 0));
-    }, 100);
+  hanldeBlur = () => {
+    setTimeout(function() {
+    var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+    window.scrollTo(0, Math.max(scrollHeight - 1, 0));
+    }, 100);
   }
 ```
 
@@ -100,9 +100,9 @@ document.body.addEventListener('touchmove', function (e) {
 
 ```yaml
 server {
-  listen  80;
+  listen  80;
   
-  #   server_name
+  #   server_name
   
   root /data/web/happy-pig;
   
@@ -124,7 +124,7 @@ server {
     
     proxy_set_header X-Nginx-Proxy true;
     
-    #       proxy_redirect   off;
+    #       proxy_redirect   off;
     
     proxy_pass [http://127.0.0.1:8081](http://127.0.0.1:8081/);
     
