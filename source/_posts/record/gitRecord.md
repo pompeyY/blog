@@ -2,7 +2,7 @@
 title: git常用命令
 categories: 记录
 tags:
- - 其他
+ - git
 # password: 123456
 # abstract: 加密文章，请输入密码 123456 查看
 # message: 请输入密码
