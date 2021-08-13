@@ -65,7 +65,7 @@
         <category>记录</category>
       </categories>
       <tags>
-        <tag>其他</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -87,6 +87,17 @@
 ]]></content>
       <categories>
         <category>记录</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微前端总结</title>
+    <url>/2021/08/13/summary/microFrontEnd/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>总结</category>
       </categories>
       <tags>
         <tag>其他</tag>
