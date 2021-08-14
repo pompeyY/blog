@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pompeyy.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="背景从 Micro Frontends 官网可以了解到，微前端概念是从微服务概念扩展而来的，摒弃大型单体方式，将前端整体分解为小而简单的块，这些块可以独立开发、测试和部署，同时仍然聚合为一个产品出现在客户面前。可以理解微前端是一种将多个可独立交付的小型前端应用聚合为一个整体的架构风格。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微前端总结">
+<meta property="og:url" content="https://pompeyy.github.io/2021/08/14/summary/microFrontEnd/index.html">
+<meta property="og:site_name" content="Pompeyy Blog">
+<meta property="og:description" content="背景从 Micro Frontends 官网可以了解到，微前端概念是从微服务概念扩展而来的，摒弃大型单体方式，将前端整体分解为小而简单的块，这些块可以独立开发、测试和部署，同时仍然聚合为一个产品出现在客户面前。可以理解微前端是一种将多个可独立交付的小型前端应用聚合为一个整体的架构风格。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/1.png">
+<meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/2.jpg">
+<meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/3.jpg">
+<meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/4.jpg">
+<meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/5.jpg">
+<meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/6.jpg">
+<meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/7.jpg">
+<meta property="article:published_time" content="2021-08-14T08:26:23.551Z">
+<meta property="article:modified_time" content="2021-08-14T08:26:23.555Z">
+<meta property="article:author" content="Pompeyy">
+<meta property="article:tag" content="微前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pompeyy.github.io/images/microFrontEnd/1.png">
+
+<link rel="canonical" href="https://pompeyy.github.io/2021/08/14/summary/microFrontEnd/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>微前端总结 | Pompeyy Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Pompeyy Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">小成靠智，大成靠德</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <div class='aritcleBox'>
+   
+    <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+      <link itemprop="mainEntityOfPage" href="https://pompeyy.github.io/2021/08/14/summary/microFrontEnd/">
+
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="image" content="/images/avatar.jpg">
+        <meta itemprop="name" content="Pompeyy">
+        <meta itemprop="description" content="">
+      </span>
+
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pompeyy Blog">
+      </span>
+        <header class="post-header">
+          <h1 class="post-title" itemprop="name headline">
+            微前端总结
+          </h1>
+
+          <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar"></i>
+                </span>
+                <span class="post-meta-item-text">发表于</span>
+
+                <time title="创建时间：2021-08-14 08:26:23" itemprop="dateCreated datePublished" datetime="2021-08-14T08:26:23+00:00">2021-08-14</time>
+              </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-folder"></i>
+                </span>
+                <span class="post-meta-item-text">分类于</span>
+                  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                  </span>
+              </span>
+
+            
+              <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-eye"></i>
+                </span>
+                <span class="post-meta-item-text">阅读次数：</span>
+                <span id="busuanzi_value_page_pv"></span>
+              </span>
+
+          </div>
+        </header>
+
+      
+      
+      
+      <div class="post-body" itemprop="articleBody">
+
+        
+          <!-- ## aaa
+![1.png](/images/microFrontEnd/1.png) -->
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>从 <a target="_blank" rel="noopener" href="https://micro-frontends.org/">Micro Frontends</a> 官网可以了解到，微前端概念是从微服务概念扩展而来的，摒弃大型单体方式，将前端整体分解为小而简单的块，这些块可以独立开发、测试和部署，同时仍然聚合为一个产品出现在客户面前。可以理解微前端是一种将多个可独立交付的小型前端应用聚合为一个整体的架构风格。</p>
+<p><strong>值得留意的几个点：</strong></p>
+<ul>
+<li>微前端不是一门具体的技术，而是整合了技术、策略和方法，可能会以脚手架、辅助插件和规范约束这种生态圈形式展示出来，是一种宏观上的架构。这种架构目前有多种方案，都有利弊之处，但只要适用当前业务场景的就是好方案。</li>
+<li>微前端并没有技术栈的约束。每一套微前端方案的设计，都是基于实际需求出发。如果是多团队统一使用了react技术栈，可能对微前端方案的跨技术栈使用并没有要求；如果是多团队同时使用了react和vue技术栈，可能就对微前端的跨技术栈要求比较高。</li>
+</ul>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ol>
+<li><p><strong>同步更新</strong><br>对比了npm包方式抽离，让我们意识到更新流程和效率的重要性。微前端由于是多个子应用的聚合，如果多个业务应用依赖同一个服务应用的功能模块，只需要更新服务应用，其他业务应用就可以立马更新，从而缩短了更新流程和节约了更新成本。</p>
+</li>
+<li><p><strong>简单、解耦的代码库</strong><br>每个单独的微前端项目的源代码库会远远小于一个单体前端项目的源代码库。这些小的代码库将会更易于开发。更值得一提的是，我们避免了不相关联的组件之间无意造成的不适当的耦合。通过增强应用程序的边界来减少这种意外耦合的情况的出现。</p>
+</li>
+<li><p><strong>独立部署</strong><br>与微服务一样，微前端的独立可部署性是关键。它减少了部署的范围，从而降低了相关风险。无论您的前端代码在何处托管，每个微前端都应该有自己的连续交付通道，该通道可以构建、测试并将其一直部署到生产环境中。我们应当能够在不考虑其他代码库或者是通道的情况下来部署每个微服务。</p>
+</li>
+<li><p><strong>多项目合并为一个单页应用</strong><br>很多微前端解决方案可以通过组织HTML或者组件化让多个项目之间合并到一块，成为一个单页应用，让体验更好。</p>
+</li>
+</ol>
+<h2 id="微前端方案种类"><a href="#微前端方案种类" class="headerlink" title="微前端方案种类"></a>微前端方案种类</h2><p><strong>目前国内微前端方案大概分为：</strong></p>
+<ul>
+<li><strong>基座模式：</strong> 通过搭建基座、配置中心来管理子应用。如基于SIngle Spa的偏通用的qiankun方案，也有基于本身团队业务量身定制的方案。</li>
+<li><strong>自组织模式：</strong> 通过约定进行互调，但会遇到处理第三方依赖等问题。</li>
+<li><strong>去中心模式：</strong> 脱离基座模式，每个应用之间都可以彼此分享资源。如基于<strong>Webpack 5 Module Federation</strong>实现的EMP微前端方案、或者<strong>nebula微前端</strong>解决方案，可以实现多个应用彼此共享资源分享。</li>
+</ul>
+<h2 id="现有微前端解决方案"><a href="#现有微前端解决方案" class="headerlink" title="现有微前端解决方案"></a>现有微前端解决方案</h2><h3 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h3><p>  众所周知，iframe是html提供的标签，能加载其他web应用的内容，并且它能兼容所有的浏览器，因此，你可以用它来加载任何你想要加载的web应用。iframe最大的特性就是提供了浏览器原生的硬隔离方案，不论是样式隔离、js 隔离这类问题统统都能被完美解决。<strong>iframe虽然基本能做到微前端所要做的所有事情，但它的最大问题也在于他的隔离性无法被突破，导致应用间上下文无法被共享，随之带来开发体验、产品体验的问题。</strong><br>  <strong>不足：</strong></p>
+<ul>
+<li> 不是单页应用，会导致浏览器刷新 iframe url 状态丢失。</li>
+<li> 弹框类的功能无法应用到整个大应用中，只能在对应的窗口内展示。</li>
+<li> 由于可能应用间不是在相同的域内，主应用的 cookie 要透传到根域名都不同的子应用中才能实现免登录效果。</li>
+<li> 每次子应用进入都是一次浏览器上下文重建、资源重新加载的过程，占用大量资源的同时也在极大地消耗资源。 经过以上思考，我个人也有了一些拓展总结：</li>
+<li> iframe的特性导致搜索引擎无法获取到其中的内容，进而无法实现应用的seo</li>
+</ul>
+<h3 id="Web-Components"><a href="#Web-Components" class="headerlink" title="Web Components"></a>Web Components</h3><p>  MDN对Web Components的定义是这样的：</p>
+<blockquote>
+<p>作为开发者，我们都知道尽可能多的重用代码是一个好主意。这对于自定义标记结构来说通常不是那么容易 — 想想复杂的HTML（以及相关的样式和脚本），有时您不得不写代码来呈现自定义UI控件，并且如果您不小心的话，多次使用它们会使您的页面变得一团糟。<br>Web Components旨在解决这些问题 — 它由三项主要技术组成，它们可以一起使用来创建封装功能的定制元素，可以在你喜欢的任何地方重用，不必担心代码冲突。</p>
+</blockquote>
+<p>  <strong>它的三项主要技术是指：</strong></p>
+<ul>
+<li><strong>Custom elements（自定义元素）：</strong>一组JavaScript API，允许您定义custom elements及其行为，然后可以在您的用户界面中按照需要使用它们。</li>
+<li><strong>Shadow DOM（影子DOM）：</strong> 一组JavaScript API，用于将封装的“影子”DOM树附加到元素（与主文档DOM分开呈现）并控制其关联的功能。通过这种方式，您可以保持元素的功能私有，这样它们就可以被脚本化和样式化，而不用担心与文档的其他部分发生冲突。</li>
+<li><strong>HTML templates（HTML模板）：</strong> <code>&lt;template&gt;</code> 和 <code>&lt;slot&gt;</code> 元素使您可以编写不在呈现页面中显示的标记模板。然后它们可以作为自定义元素结构的基础被多次重用。 通过以上描述，再结合微前端的概念. </li>
+</ul>
+<p>  <strong>我们来看看Web Components是如何做到微前端：</strong></p>
+<ul>
+<li><strong>技术栈无关：</strong> Web Components是浏览器原生组件，那即是在任何框架中都可以使用。</li>
+<li><strong>独立开发：</strong> 使用Web Components开发的应用无需与其他应用间产生任何关联。</li>
+<li><strong>应用间隔离：</strong> Shadow DOM的特性，各个引入的微应用间可以达到相互隔离的效果。 综上所述，Web Components是有能力以组件加载的方式将微应用整合在一起作为微前端的一种手段，但不幸的是，Web Components是浏览器的新特性，所以它的兼容性不是很好，如果有兼容性要求的项目还是无法使用，具体请查看<a target="_blank" rel="noopener" href="https://caniuse.com/?search=WebComponents">can i use</a>。</li>
+</ul>
+<h3 id="MicroApp（京东开源）"><a href="#MicroApp（京东开源）" class="headerlink" title="MicroApp（京东开源）"></a><a target="_blank" rel="noopener" href="https://zeroing.jd.com/micro-app/docs.html#/zh-cn/start">MicroApp（京东开源）</a></h3><p>  <strong>类WebComponent：</strong> 就是使用CustomElement结合自定义的ShadowDom实现WebComponent基本一致的功能。<br>  由于ShadowDom存在的问题，采用自定义的样式隔离和元素隔离实现ShadowDom类似的功能，然后将微前端应用封装在一个CustomElement中，从而模拟实现了一个类WebComponent组件，它的使用方式和兼容性与WebComponent一致，同时也避开了ShadowDom的问题。并且由于自定义ShadowDom的隔离特性，Micro App不需要像single-spa和qiankun一样要求子应用修改渲染逻辑并暴露出方法，也不需要修改webpack配置。<br>  通过上述方案封装了一个自定义标签micro-app，它的渲染机制和功能与WebComponent类似，开发者可以像使用web组件一样接入微前端。它可以兼容任何框架，在使用方式和数据通信上也更加组件化，这显著降低了基座应用的接入成本，并且由于元素隔离的属性，子应用的改动量也大大降低。<br>  <strong>这是该框架现有的功能对比图（仅供参考）</strong><br>  <img data-src="/images/microFrontEnd/1.png"></p>
+<p>  <strong>不足：</strong></p>
+<ul>
+<li>多个项目之间不能共用相同的依赖</li>
+<li>应用级别的引用，不够灵活</li>
+<li>不够成熟</li>
+</ul>
+<h3 id="qiankun"><a href="#qiankun" class="headerlink" title="qiankun"></a>qiankun</h3><p>在微前端界，qiankun算得上是最早成型且知名度最广的框架了，它是真正意义上的单页微前端框架，那么qiankun到底有哪些特点呢，在其<a target="_blank" rel="noopener" href="https://qiankun.umijs.org/zh/guide">官网</a>中我找到了如下概括：</p>
+<ul>
+<li>基于single-spa封装，提供了更加开箱即用的 API</li>
+<li>技术栈无关，任意技术栈的应用均可 使用/接入，不论是 React/Vue/Angular/JQuery 还是其他等框架</li>
+<li>HTML Entry 接入方式，让你接入微应用像使用 iframe 一样简单</li>
+<li>样式隔离，确保微应用之间样式互相不干扰</li>
+<li>JS 沙箱，确保微应用之间 全局变量/事件 不冲突</li>
+<li>资源预加载，在浏览器空闲时间预加载未打开的微应用资源，加速微应用打开速度</li>
+<li>umi 插件，提供了 @umijs/plugin-qiankun 供 umi 应用一键切换成微前端架构系统 除了最后一点拓展以外，微前端想要达到的效果都已经达到。</li>
+</ul>
+<p><strong>不足：</strong></p>
+<ul>
+<li>多个项目之间不能共用相同的依赖</li>
+<li>应用级别的引用，不够灵活</li>
+</ul>
+<h3 id="EMP"><a href="#EMP" class="headerlink" title="EMP"></a>EMP</h3><p><a target="_blank" rel="noopener" href="https://github.com/efoxTeam/emp">EMP</a>是由欢聚时代业务中台自主研发的最年轻的单页微前端解决方案<br><strong>功能：</strong></p>
+<ul>
+<li>基于Webpack5的新特性<strong>Module Federation</strong>实现，达到第三方依赖共享，减少不必要的代码引入的目的。</li>
+<li><strong>每个微应用独立部署运行</strong>，并通过cdn的方式引入主程序中，因此只需要部署一次，便可以提供给任何基于Module Federation的应用使用。并且此部分代码是远程引入，无需参与应用的打包。</li>
+<li><strong>动态更新微应用</strong>：EMP是通过cdn加载微应用，因此每个微应用中的代码有变动时，无需重新打包发布新的整合应用便能加载到最新的微应用。</li>
+<li><strong>去中心化</strong>，每个微应用间都可以引入其他的微应用，无中心应用的概念。</li>
+<li><strong>跨技术栈组件式调用</strong>，提供了在主应用框架中可以调用其他框架组件的能力（目前已支持互相调用的框架及使用方式请参阅官方文档）。</li>
+<li><strong>按需加载</strong>，开发者可以选择只加载微应用中需要的部分，而不是强制只能将整个应用全部加载（<strong>这是与上面几种微前端解决方案中最大的不同</strong>）。</li>
+<li><strong>应用间通信</strong>，每一个应用都可以进行状态共享，就像在使用npm模块进行开发一样便捷。</li>
+<li><strong>生成对应技术栈模板</strong>，它能像create-react-app一样，也能像create-vue-app一样，通过指令一键搭建好开发环境，减少开发者的负担。</li>
+<li><strong>远程拉取ts声明文件</strong>，emp-cli中内置了拉取远程应用中代码声明文件的能力，让使用ts开发的开发者不再为代码报错而烦恼。</li>
+</ul>
+<p><strong>不足：</strong></p>
+<ul>
+<li>是一套全新的脚手架，对现有项目改动较大，老项目迁移都必须用这个框架重构。</li>
+<li>没有实现js隔离</li>
+<li>使用时会有框架的限制。不过目前已经支持了主流框架。</li>
+</ul>
+<h3 id="nebula"><a href="#nebula" class="headerlink" title="nebula"></a>nebula</h3><p><a target="_blank" rel="noopener" href="https://code.haiziwang.com/b/nebula/cli">nebula</a>是由孩子王自主研发的微前端解决方案。<br><strong>功能：</strong></p>
+<ul>
+<li>基于Webpack5的新特性<strong>Module Federation</strong>实现，达到第三方依赖共享，减少不必要的代码引入的目的。</li>
+<li><strong>每个微应用独立部署运行</strong>，并通过cdn的方式引入主程序中，因此只需要部署一次，便可以提供给任何基于Module Federation的应用使用。并且此部分代码是远程引入，无需参与应用的打包。</li>
+<li><strong>动态更新微应用</strong>：EMP是通过cdn加载微应用，因此每个微应用中的代码有变动时，无需重新打包发布新的整合应用便能加载到最新的微应用。</li>
+<li><strong>去中心化</strong>，每个微应用间都可以引入其他的微应用，无中心应用的概念。</li>
+<li><strong>跨技术栈组件式调用</strong>，提供了在主应用框架中可以调用其他框架组件的能力（目前已支持互相调用的框架及使用方式请参阅官方文档）。</li>
+<li><strong>按需加载</strong>，开发者可以选择只加载微应用中需要的部分，而不是强制只能将整个应用全部加载。</li>
+<li><strong>远程拉取ts声明文件</strong>，emp-cli中内置了拉取远程应用中代码声明文件的能力，让使用ts开发的开发者不再为代码报错而烦恼。</li>
+</ul>
+<p><strong>与EMP的差异：</strong></p>
+<ul>
+<li>由于公司使用的react脚手架是基于create-react-app的，所以迁移EMP成本较大，但是create-react-app并没有升级到WP5(Webpack5),用不了MF(Module Federation)功能，所以自己将create-react-app 现有版本的基础上升级到WP5(参考create-react-app WP5社区版升级)，后面CRA官方升级WP5之后，可以无缝切换回官方版本</li>
+<li>暂时没有实现应用间通信，后面使用场景增加之后，可以添加。</li>
+</ul>
+<h2 id="nebula使用"><a href="#nebula使用" class="headerlink" title="nebula使用"></a>nebula使用</h2><h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><ol>
+<li>安装</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @nebula/cli -g --registry=https://npmneibu.haiziwang.com/</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>初始化项目</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nebula init</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/microFrontEnd/2.jpg"></p>
+<ol start="3">
+<li>其他命令</li>
+</ol>
+<ul>
+<li>查看所有命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nebula -h</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/microFrontEnd/3.jpg"></p>
+<ul>
+<li>创建项目ts文件(其中fileName可以改变d.ts中 declare后面的前缀 默认取package.json中的name， 既package name与MF中的fileName不相等时使用)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nebula tsc -n|--createName, -p|--createPath -f|--fileName  </span><br></pre></td></tr></table></figure>
+<ul>
+<li>ts类型根据 nebula.config.js 同步</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nebula tsf </span><br></pre></td></tr></table></figure>
+<ul>
+<li>ts类型远程同步</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nebula tss &lt;remoteUrl&gt; -n|--saveName, -p|--savePath </span><br></pre></td></tr></table></figure>
+
+<p><strong>依赖架构</strong></p>
+<p><img data-src="/images/microFrontEnd/4.jpg"></p>
+<h3 id="nebula的公共基座"><a href="#nebula的公共基座" class="headerlink" title="nebula的公共基座"></a>nebula的公共基座</h3><p><a target="_blank" rel="noopener" href="https://code.haiziwang.com/b/nebula/base">项目base</a> 可以点击查看</p>
+<blockquote>
+<p>基座需要在package.json配置 build:tsc 命令 用于创建ts声明文件 <strong>MF的语法解释放在后面</strong></p>
+</blockquote>
+<p><img data-src="/images/microFrontEnd/5.jpg"></p>
+<blockquote>
+<p>然后在craco.config.js当中将要导出 供其他应用使用的公共 变量、方法或者组件在plugins中配置</p>
+</blockquote>
+<p><img data-src="/images/microFrontEnd/6.jpg"></p>
+<h3 id="nebula的子项目"><a href="#nebula的子项目" class="headerlink" title="nebula的子项目"></a>nebula的子项目</h3><p>真实线上使用项目 1.<a target="_blank" rel="noopener" href="https://code.haiziwang.com/b/sales-adviser-b-m">聚客宝雇主端H5</a>  2.<a target="_blank" rel="noopener" href="https://code.haiziwang.com/tools-web/business-h5">H5商业化</a></p>
+<p>用nebula 初始化过之后需要添加几个配置即可正常使用</p>
+<ol>
+<li>在package.json中添加一个script</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">   <span class="attr">&quot;prestart&quot;</span>: <span class="string">&quot;nebula tsf&quot;</span>,</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在根目录新建nebula.config.js文件 文件中添加</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">dts</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">saveName</span>: <span class="string">&#x27;nebulatBase.d.ts&#x27;</span>, <span class="comment">// 保存的文件名称</span></span><br><span class="line">      <span class="attr">savePath</span>: <span class="string">&#x27;src/types&#x27;</span>,    <span class="comment">// 保存文件的位置</span></span><br><span class="line">      <span class="attr">remoteUrl</span>: <span class="string">&#x27;https://fedcineibu.haiziwang.com/dts/nebula/nebulaBase.d.ts&#x27;</span>, <span class="comment">// 远程ts地址</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在craco.config.js中的plugins 添加MF配置即可</li>
+</ol>
+<p><img data-src="/images/microFrontEnd/7.jpg"></p>
+
+      </div>
+
+      
+      
+      
+          
+
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Pompeyy
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://www.pompeyy.top/2021/08/14/summary/microFrontEnd/" title="微前端总结" rel="noopener" target="_blank">https://www.pompeyy.top/2021/08/14/summary/microFrontEnd/</a>
+    
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+
+
+        <footer class="post-footer">
+            
+            <div class="post-tags">
+                <a href="/tags/%E5%BE%AE%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 微前端</a>
+            </div>
+
+          
+
+
+          
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/14/record/linuxRecord/" rel="next" title="linxu常用命令">
+      linxu常用命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+        </footer>
+      
+    </article>
+  </div>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%96%B9%E6%A1%88%E7%A7%8D%E7%B1%BB"><span class="nav-text">微前端方案种类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E6%9C%89%E5%BE%AE%E5%89%8D%E7%AB%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">现有微前端解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iframe"><span class="nav-text">iframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Components"><span class="nav-text">Web Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MicroApp%EF%BC%88%E4%BA%AC%E4%B8%9C%E5%BC%80%E6%BA%90%EF%BC%89"><span class="nav-text">MicroApp（京东开源）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qiankun"><span class="nav-text">qiankun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EMP"><span class="nav-text">EMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nebula"><span class="nav-text">nebula</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nebula%E4%BD%BF%E7%94%A8"><span class="nav-text">nebula使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-text">基础命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nebula%E7%9A%84%E5%85%AC%E5%85%B1%E5%9F%BA%E5%BA%A7"><span class="nav-text">nebula的公共基座</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nebula%E7%9A%84%E5%AD%90%E9%A1%B9%E7%9B%AE"><span class="nav-text">nebula的子项目</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pompeyy"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Pompeyy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/pompeyY" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;pompeyY" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pompeyy</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'f3a838eb095bfed0f5d2',
+      clientSecret: 'f35bcae72b0ee1b1bdf7050a3bf0a76f1218de6f',
+      repo        : 'blog',
+      owner       : 'pompeyY',
+      admin       : ['pompeyY'],
+      id          : '5cbfba98ff155e3427c92afe58a91127',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
