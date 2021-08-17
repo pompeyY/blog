@@ -483,5 +483,4 @@ var __webpack_modules__ = {
 3. 在加载的过程中发现依赖的远程remotes，会加载该remotes的js
 4. remotes的js又会有各种依赖，根据MF的shared配置，将共享依赖放到之前提到的 shareScope 即共享作用域
 5. 所有依赖以及chunk都加载完成之后，才会去执行bootstrap.js里面的module 进行正常渲染了
-
 <img src='/images/moduleFederation/14.jpg' style='width: 500px'/>
