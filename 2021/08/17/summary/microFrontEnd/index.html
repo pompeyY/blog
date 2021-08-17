@@ -24,7 +24,7 @@
   <meta name="description" content="背景从 Micro Frontends 官网可以了解到，微前端概念是从微服务概念扩展而来的，摒弃大型单体方式，将前端整体分解为小而简单的块，这些块可以独立开发、测试和部署，同时仍然聚合为一个产品出现在客户面前。可以理解微前端是一种将多个可独立交付的小型前端应用聚合为一个整体的架构风格。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微前端总结">
-<meta property="og:url" content="https://pompeyy.github.io/2021/08/14/summary/microFrontEnd/index.html">
+<meta property="og:url" content="https://pompeyy.github.io/2021/08/17/summary/microFrontEnd/index.html">
 <meta property="og:site_name" content="Pompeyy Blog">
 <meta property="og:description" content="背景从 Micro Frontends 官网可以了解到，微前端概念是从微服务概念扩展而来的，摒弃大型单体方式，将前端整体分解为小而简单的块，这些块可以独立开发、测试和部署，同时仍然聚合为一个产品出现在客户面前。可以理解微前端是一种将多个可独立交付的小型前端应用聚合为一个整体的架构风格。">
 <meta property="og:locale" content="zh_CN">
@@ -35,14 +35,14 @@
 <meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/5.jpg">
 <meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/6.jpg">
 <meta property="og:image" content="https://pompeyy.github.io/images/microFrontEnd/7.jpg">
-<meta property="article:published_time" content="2021-08-14T08:26:23.551Z">
-<meta property="article:modified_time" content="2021-08-14T08:26:23.555Z">
+<meta property="article:published_time" content="2021-08-17T09:57:18.989Z">
+<meta property="article:modified_time" content="2021-08-17T09:57:18.989Z">
 <meta property="article:author" content="Pompeyy">
 <meta property="article:tag" content="微前端">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pompeyy.github.io/images/microFrontEnd/1.png">
 
-<link rel="canonical" href="https://pompeyy.github.io/2021/08/14/summary/microFrontEnd/">
+<link rel="canonical" href="https://pompeyy.github.io/2021/08/17/summary/microFrontEnd/">
 
 
 <script id="page-configurations">
@@ -201,7 +201,7 @@
   <div class='aritcleBox'>
    
     <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-      <link itemprop="mainEntityOfPage" href="https://pompeyy.github.io/2021/08/14/summary/microFrontEnd/">
+      <link itemprop="mainEntityOfPage" href="https://pompeyy.github.io/2021/08/17/summary/microFrontEnd/">
 
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="image" content="/images/avatar.jpg">
@@ -224,7 +224,7 @@
                 </span>
                 <span class="post-meta-item-text">发表于</span>
 
-                <time title="创建时间：2021-08-14 08:26:23" itemprop="dateCreated datePublished" datetime="2021-08-14T08:26:23+00:00">2021-08-14</time>
+                <time title="创建时间：2021-08-17 09:57:18" itemprop="dateCreated datePublished" datetime="2021-08-17T09:57:18+00:00">2021-08-17</time>
               </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -301,7 +301,7 @@
 <ul>
 <li><strong>技术栈无关：</strong> Web Components是浏览器原生组件，那即是在任何框架中都可以使用。</li>
 <li><strong>独立开发：</strong> 使用Web Components开发的应用无需与其他应用间产生任何关联。</li>
-<li><strong>应用间隔离：</strong> Shadow DOM的特性，各个引入的微应用间可以达到相互隔离的效果。 综上所述，Web Components是有能力以组件加载的方式将微应用整合在一起作为微前端的一种手段，但不幸的是，Web Components是浏览器的新特性，所以它的兼容性不是很好，如果有兼容性要求的项目还是无法使用，具体请查看<a target="_blank" rel="noopener" href="https://caniuse.com/?search=WebComponents">can i use</a>。</li>
+<li><strong>应用间隔离：</strong> Shadow DOM的特性，各个引入的微应用间可以达到相互隔离的效果。 综上所述，Web Components是有能力以组件加载的方式将微应用整合在一起作为微前端的一种手段，但不幸的是，Web Components是浏览器的新特性，所以它的兼容性不是很好，如果有兼容性要求的项目还是无法使用，具体请查看<a target="_blank" rel="noopener" href="https://caniuse.com/?search=WebComponents">can i use</a>。<strong>主要是 ShadowDom的兼容性非常不好，一些前端框架在ShadowDom环境下无法正常运行，尤其是react框架（也有解决方案，但是写起来比较麻烦<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/81427755">参考链接</a>）</strong></li>
 </ul>
 <h3 id="MicroApp（京东开源）"><a href="#MicroApp（京东开源）" class="headerlink" title="MicroApp（京东开源）"></a><a target="_blank" rel="noopener" href="https://zeroing.jd.com/micro-app/docs.html#/zh-cn/start">MicroApp（京东开源）</a></h3><p>  <strong>类WebComponent：</strong> 就是使用CustomElement结合自定义的ShadowDom实现WebComponent基本一致的功能。<br>  由于ShadowDom存在的问题，采用自定义的样式隔离和元素隔离实现ShadowDom类似的功能，然后将微前端应用封装在一个CustomElement中，从而模拟实现了一个类WebComponent组件，它的使用方式和兼容性与WebComponent一致，同时也避开了ShadowDom的问题。并且由于自定义ShadowDom的隔离特性，Micro App不需要像single-spa和qiankun一样要求子应用修改渲染逻辑并暴露出方法，也不需要修改webpack配置。<br>  通过上述方案封装了一个自定义标签micro-app，它的渲染机制和功能与WebComponent类似，开发者可以像使用web组件一样接入微前端。它可以兼容任何框架，在使用方式和数据通信上也更加组件化，这显著降低了基座应用的接入成本，并且由于元素隔离的属性，子应用的改动量也大大降低。<br>  <strong>这是该框架现有的功能对比图（仅供参考）</strong><br>  <img data-src="/images/microFrontEnd/1.png"></p>
 <p>  <strong>不足：</strong></p>
@@ -351,11 +351,11 @@
 <li><strong>去中心化</strong>，每个微应用间都可以引入其他的微应用，无中心应用的概念。</li>
 <li><strong>跨技术栈组件式调用</strong>，提供了在主应用框架中可以调用其他框架组件的能力（目前已支持互相调用的框架及使用方式请参阅官方文档）。</li>
 <li><strong>按需加载</strong>，开发者可以选择只加载微应用中需要的部分，而不是强制只能将整个应用全部加载。</li>
-<li><strong>远程拉取ts声明文件</strong>，emp-cli中内置了拉取远程应用中代码声明文件的能力，让使用ts开发的开发者不再为代码报错而烦恼。</li>
+<li><strong>远程拉取ts声明文件</strong>，nebula-cli中内置了拉取远程应用中代码声明文件的能力，让使用ts开发的开发者不再为代码报错而烦恼。</li>
 </ul>
 <p><strong>与EMP的差异：</strong></p>
 <ul>
-<li>由于公司使用的react脚手架是基于create-react-app的，所以迁移EMP成本较大，但是create-react-app并没有升级到WP5(Webpack5),用不了MF(Module Federation)功能，所以自己将create-react-app 现有版本的基础上升级到WP5(参考create-react-app WP5社区版升级)，后面CRA官方升级WP5之后，可以无缝切换回官方版本</li>
+<li>由于公司使用的react脚手架是基于create-react-app的，所以迁移EMP成本较大，但是create-react-app并没有升级到WP5(Webpack5),用不了MF(Module Federation)功能，所以我们将create-react-app 现有版本的基础上升级到WP5(参考create-react-app WP5社区版升级)，后面CRA官方升级WP5之后，可以无缝切换回官方版本</li>
 <li>暂时没有实现应用间通信，后面使用场景增加之后，可以添加。</li>
 </ul>
 <h2 id="nebula使用"><a href="#nebula使用" class="headerlink" title="nebula使用"></a>nebula使用</h2><h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><ol>
@@ -435,7 +435,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://www.pompeyy.top/2021/08/14/summary/microFrontEnd/" title="微前端总结" rel="noopener" target="_blank">https://www.pompeyy.top/2021/08/14/summary/microFrontEnd/</a>
+    <a href="https://www.pompeyy.top/2021/08/17/summary/microFrontEnd/" title="微前端总结" rel="noopener" target="_blank">https://www.pompeyy.top/2021/08/17/summary/microFrontEnd/</a>
     
   </li>
   <li class="post-copyright-license">
@@ -458,9 +458,12 @@
 
           
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2021/08/14/record/linuxRecord/" rel="next" title="linxu常用命令">
+    <a href="/2021/08/17/summary/moduleFederation/" rel="prev" title="Module Federation 总结">
+      <i class="fa fa-chevron-left"></i> Module Federation 总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/17/record/linuxRecord/" rel="next" title="linxu常用命令">
       linxu常用命令 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -539,7 +542,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -552,7 +555,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -683,7 +686,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'blog',
       owner       : 'pompeyY',
       admin       : ['pompeyY'],
-      id          : '5cbfba98ff155e3427c92afe58a91127',
+      id          : 'b3cba8a1d7f77b3c03f4d7768403cdb3',
         language: 'zh-CN',
       distractionFreeMode: true
     });
