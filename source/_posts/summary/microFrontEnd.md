@@ -66,7 +66,7 @@ top: 98
   **我们来看看Web Components是如何做到微前端：**
   - **技术栈无关：** Web Components是浏览器原生组件，那即是在任何框架中都可以使用。
   - **独立开发：** 使用Web Components开发的应用无需与其他应用间产生任何关联。
-  - **应用间隔离：** Shadow DOM的特性，各个引入的微应用间可以达到相互隔离的效果。 综上所述，Web Components是有能力以组件加载的方式将微应用整合在一起作为微前端的一种手段，但不幸的是，Web Components是浏览器的新特性，所以它的兼容性不是很好，如果有兼容性要求的项目还是无法使用，具体请查看[can i use](https://caniuse.com/?search=WebComponents)。
+  - **应用间隔离：** Shadow DOM的特性，各个引入的微应用间可以达到相互隔离的效果。 综上所述，Web Components是有能力以组件加载的方式将微应用整合在一起作为微前端的一种手段，但不幸的是，Web Components是浏览器的新特性，所以它的兼容性不是很好，如果有兼容性要求的项目还是无法使用，具体请查看[can i use](https://caniuse.com/?search=WebComponents)。**主要是 ShadowDom的兼容性非常不好，一些前端框架在ShadowDom环境下无法正常运行，尤其是react框架（也有解决方案，但是写起来比较麻烦[参考链接](https://zhuanlan.zhihu.com/p/81427755)）**
 
 ### [MicroApp（京东开源）](https://zeroing.jd.com/micro-app/docs.html#/zh-cn/start)
   **类WebComponent：** 就是使用CustomElement结合自定义的ShadowDom实现WebComponent基本一致的功能。
@@ -123,10 +123,10 @@ top: 98
 - **去中心化**，每个微应用间都可以引入其他的微应用，无中心应用的概念。
 - **跨技术栈组件式调用**，提供了在主应用框架中可以调用其他框架组件的能力（目前已支持互相调用的框架及使用方式请参阅官方文档）。
 - **按需加载**，开发者可以选择只加载微应用中需要的部分，而不是强制只能将整个应用全部加载。
-- **远程拉取ts声明文件**，emp-cli中内置了拉取远程应用中代码声明文件的能力，让使用ts开发的开发者不再为代码报错而烦恼。
+- **远程拉取ts声明文件**，nebula-cli中内置了拉取远程应用中代码声明文件的能力，让使用ts开发的开发者不再为代码报错而烦恼。
 
 **与EMP的差异：**
-- 由于公司使用的react脚手架是基于create-react-app的，所以迁移EMP成本较大，但是create-react-app并没有升级到WP5(Webpack5),用不了MF(Module Federation)功能，所以自己将create-react-app 现有版本的基础上升级到WP5(参考create-react-app WP5社区版升级)，后面CRA官方升级WP5之后，可以无缝切换回官方版本
+- 由于公司使用的react脚手架是基于create-react-app的，所以迁移EMP成本较大，但是create-react-app并没有升级到WP5(Webpack5),用不了MF(Module Federation)功能，所以我们将create-react-app 现有版本的基础上升级到WP5(参考create-react-app WP5社区版升级)，后面CRA官方升级WP5之后，可以无缝切换回官方版本
 - 暂时没有实现应用间通信，后面使用场景增加之后，可以添加。
 
 
