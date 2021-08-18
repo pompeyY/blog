@@ -78,7 +78,9 @@ top: 98
   **不足：**
   - 多个项目之间不能共用相同的依赖
   - 应用级别的引用，不够灵活
-  - 不够成熟
+  - 框架不够成熟
+  - 各浏览器对Custom Elements的支持还不够成熟
+  ![](/images/microFrontEnd/8.png)
 
 ### qiankun
 在微前端界，qiankun算得上是最早成型且知名度最广的框架了，它是真正意义上的单页微前端框架，那么qiankun到底有哪些特点呢，在其[官网](https://qiankun.umijs.org/zh/guide)中我找到了如下概括：
