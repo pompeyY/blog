@@ -96,6 +96,17 @@ document.body.addEventListener('touchmove', function (e) {
   - -args --disable-web-security --user-data-dir
 ```
 
+## 浏览器console里自动写Cookie
+```javascript
+  var str = 'xxx你的cookie;'
+
+  str.replace(/\s*/ig, '')
+  var arr = str.split(';')
+  arr.map(function(item) {
+    document.cookie = item + '; domain=cekid.com; path=/'
+  })
+```
+
 ## Nginx 常用配置:
 
 ```yaml
