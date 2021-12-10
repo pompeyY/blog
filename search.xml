@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>前端日常记录</title>
-    <url>/2021/08/28/record/frontendRecord/</url>
+    <url>/2021/12/10/record/frontendRecord/</url>
     <content><![CDATA[<h2 id="让移动端滑动更加顺畅"><a href="#让移动端滑动更加顺畅" class="headerlink" title="让移动端滑动更加顺畅"></a>让移动端滑动更加顺畅</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br></pre></td></tr></table></figure>
 
 <h2 id="react项目启动用https的命令"><a href="#react项目启动用https的命令" class="headerlink" title="react项目启动用https的命令"></a>react项目启动用https的命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="variable">$env</span>:HTTPS = <span class="string">&quot;true&quot;</span>) -and (npm start)</span><br></pre></td></tr></table></figure>
@@ -58,7 +58,7 @@
   </entry>
   <entry>
     <title>linxu常用命令</title>
-    <url>/2021/08/28/record/linuxRecord/</url>
+    <url>/2021/12/10/record/linuxRecord/</url>
     <content><![CDATA[<h2 id="linux-查看内存占用前十的进程"><a href="#linux-查看内存占用前十的进程" class="headerlink" title="linux 查看内存占用前十的进程"></a>linux 查看内存占用前十的进程</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps aux|head -1;ps aux|grep -v PID|sort -rn -k +3|head</span><br></pre></td></tr></table></figure>
 
 <h2 id="linux-设置PS1"><a href="#linux-设置PS1" class="headerlink" title="linux 设置PS1"></a>linux 设置PS1</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PS1=<span class="string">&#x27;\[\e]0;\u@\h: \w\a\]$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u:\[\033[01;34m\]\W\[\033[00m\]\$&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -72,7 +72,7 @@
   </entry>
   <entry>
     <title>git常用命令</title>
-    <url>/2021/08/28/record/gitRecord/</url>
+    <url>/2021/12/10/record/gitRecord/</url>
     <content><![CDATA[<h2 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a>git tag</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag                             <span class="comment"># 查看tag</span></span><br><span class="line">git tag -a v1.0 -m <span class="string">&#x27;some comments&#x27;</span>  <span class="comment"># 创建</span></span><br><span class="line">git push origin --tags              <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure>
 <!-- > git branch -a 查看所有分支
 > git branch -d 分支名   （删除本地分支） -->
@@ -96,7 +96,7 @@
   </entry>
   <entry>
     <title>微前端总结</title>
-    <url>/2021/08/28/summary/microFrontEnd/</url>
+    <url>/2021/12/10/summary/microFrontEnd/</url>
     <content><![CDATA[<!-- ## aaa
 ![1.png](/images/microFrontEnd/1.png) -->
 
@@ -272,7 +272,7 @@
   </entry>
   <entry>
     <title>Module Federation 总结</title>
-    <url>/2021/08/28/summary/moduleFederation/</url>
+    <url>/2021/12/10/summary/moduleFederation/</url>
     <content><![CDATA[<h2 id="什么是Module-Federation（简称MF）"><a href="#什么是Module-Federation（简称MF）" class="headerlink" title="什么是Module Federation（简称MF）"></a>什么是Module Federation（简称MF）</h2><p>MF是webpack5的新特性，关于 module federation，webpack5 官方文档给出了相关说明，原文如下：</p>
 <blockquote>
 <p>Multiple separate builds should form a single application. These separate builds should not have dependencies between each other, so they can be developed and deployed individually. This is often known as Micro-Frontends, but is not limited to that.</p>
