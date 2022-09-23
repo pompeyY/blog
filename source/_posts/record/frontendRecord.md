@@ -107,6 +107,14 @@ document.body.addEventListener('touchmove', function (e) {
   })
 ```
 
+## 跨域头
+```
+  Access-Control-Allow-Credentials: true
+  Access-Control-Allow-Headers: DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,token
+  Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS
+  Access-Control-Allow-Origin: https://bhadmin.haiziwang.com
+```
+
 ## Nginx 常用配置:
 
 ```yaml
