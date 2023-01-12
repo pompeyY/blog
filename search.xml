@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>前端日常记录</title>
-    <url>/blog/2022/09/01/record/frontendRecord/</url>
+    <url>/blog/2023/01/12/record/frontendRecord/</url>
     <content><![CDATA[<h2 id="让移动端滑动更加顺畅"><a href="#让移动端滑动更加顺畅" class="headerlink" title="让移动端滑动更加顺畅"></a>让移动端滑动更加顺畅</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br></pre></td></tr></table></figure>
 
 <h2 id="react项目启动用https的命令"><a href="#react项目启动用https的命令" class="headerlink" title="react项目启动用https的命令"></a>react项目启动用https的命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(<span class="variable">$env</span>:HTTPS = <span class="string">&quot;true&quot;</span>) -and (npm start)</span><br></pre></td></tr></table></figure>
@@ -43,11 +43,14 @@
 
 <h2 id="浏览器console里自动写Cookie"><a href="#浏览器console里自动写Cookie" class="headerlink" title="浏览器console里自动写Cookie"></a>浏览器console里自动写Cookie</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;xxx你的cookie;&#x27;</span></span><br><span class="line"></span><br><span class="line">str.<span class="title function_">replace</span>(<span class="regexp">/\s*/ig</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> arr = str.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line">arr.<span class="title function_">map</span>(<span class="keyword">function</span>(<span class="params">item</span>) &#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">cookie</span> = item + <span class="string">&#x27;; domain=cekid.com; path=/&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+<h2 id="跨域头"><a href="#跨域头" class="headerlink" title="跨域头"></a>跨域头</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Credentials: true</span><br><span class="line">Access-Control-Allow-Headers: DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,token</span><br><span class="line">Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS</span><br><span class="line">Access-Control-Allow-Origin: https://bhadmin.haiziwang.com</span><br></pre></td></tr></table></figure>
+
 <h2 id="Nginx-常用配置"><a href="#Nginx-常用配置" class="headerlink" title="Nginx 常用配置:"></a>Nginx 常用配置:</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">server</span> &#123;</span><br><span class="line">  <span class="string">listen</span>  <span class="number">80</span><span class="string">;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">#   server_name</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">root</span> <span class="string">/data/web/happy-pig;</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">error_log</span> <span class="string">/root/nginx_err.log;</span></span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">/</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="string">try_files</span> <span class="string">$uri</span> <span class="string">@fallback;</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">/happy_pig/api/</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Real-IP</span> <span class="string">$remote_addr;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Forward-For</span> <span class="string">$proxy_add_x_forwarded_for;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">Host</span> <span class="string">$http_host;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_set_header</span> <span class="string">X-Nginx-Proxy</span> <span class="literal">true</span><span class="string">;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#       proxy_redirect   off;</span></span><br><span class="line">    </span><br><span class="line">    <span class="string">proxy_pass</span> [<span class="string">http://127.0.0.1:8081</span>]<span class="string">(http://127.0.0.1:8081/);</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="string">location</span> <span class="string">@fallback</span> &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="string">rewrite</span> <span class="string">.*</span> <span class="string">/index.html</span> <span class="string">break;</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="eventloop"><a href="#eventloop" class="headerlink" title="eventloop"></a>eventloop</h2><blockquote>
 <p><a href="https://juejin.im/post/5c9a43175188252d876e5903">参考链接 https://juejin.im/post/5c9a43175188252d876e5903</a></p>
 </blockquote>
+<h2 id="clash-OneDrive同步"><a href="#clash-OneDrive同步" class="headerlink" title="clash OneDrive同步"></a>clash OneDrive同步</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mklink /D &quot;C:\Users\pompey\.config\clash&quot; &quot;D:\OneDrive\clash\data&quot;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>记录</category>
@@ -58,7 +61,7 @@
   </entry>
   <entry>
     <title>linxu常用命令</title>
-    <url>/blog/2022/09/01/record/linuxRecord/</url>
+    <url>/blog/2023/01/12/record/linuxRecord/</url>
     <content><![CDATA[<h2 id="linux-查看内存占用前十的进程"><a href="#linux-查看内存占用前十的进程" class="headerlink" title="linux 查看内存占用前十的进程"></a>linux 查看内存占用前十的进程</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps aux|<span class="built_in">head</span> -1;ps aux|grep -v PID|<span class="built_in">sort</span> -rn -k +3|<span class="built_in">head</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="linux-设置PS1"><a href="#linux-设置PS1" class="headerlink" title="linux 设置PS1"></a>linux 设置PS1</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PS1=<span class="string">&#x27;\[\e]0;\u@\h: \w\a\]$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u:\[\033[01;34m\]\W\[\033[00m\]\$&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -72,7 +75,7 @@
   </entry>
   <entry>
     <title>git常用命令</title>
-    <url>/blog/2022/09/01/record/gitRecord/</url>
+    <url>/blog/2023/01/12/record/gitRecord/</url>
     <content><![CDATA[<h2 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a>git tag</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag                             <span class="comment"># 查看tag</span></span><br><span class="line">git tag -a v1.0 -m <span class="string">&#x27;some comments&#x27;</span>  <span class="comment"># 创建</span></span><br><span class="line">git push origin --tags              <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure>
 <!-- > git branch -a 查看所有分支
 > git branch -d 分支名   （删除本地分支） -->
@@ -96,7 +99,7 @@
   </entry>
   <entry>
     <title>微前端总结</title>
-    <url>/blog/2022/09/01/summary/microFrontEnd/</url>
+    <url>/blog/2023/01/12/summary/microFrontEnd/</url>
     <content><![CDATA[<!-- ## aaa
 ![1.png](/images/microFrontEnd/1.png) -->
 
@@ -272,7 +275,7 @@
   </entry>
   <entry>
     <title>Module Federation 总结</title>
-    <url>/blog/2022/09/01/summary/moduleFederation/</url>
+    <url>/blog/2023/01/12/summary/moduleFederation/</url>
     <content><![CDATA[<h2 id="什么是Module-Federation（简称MF）"><a href="#什么是Module-Federation（简称MF）" class="headerlink" title="什么是Module Federation（简称MF）"></a>什么是Module Federation（简称MF）</h2><p>MF是webpack5的新特性，关于 module federation，webpack5 官方文档给出了相关说明，原文如下：</p>
 <blockquote>
 <p>Multiple separate builds should form a single application. These separate builds should not have dependencies between each other, so they can be developed and deployed individually. This is often known as Micro-Frontends, but is not limited to that.</p>
@@ -306,7 +309,7 @@
 </ul>
 </li>
 <li><p><strong>remotes</strong><br>被当前 host 应用消费的 remote 应用。<br>remotes 是一个对象，key 值是一个要消费的应用的别名。如果我们在要 host 应用中使用 remote 应用的 button 组件时，我们的代码如下:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">RemoteButton</span> = <span class="title class_">React</span>.<span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&#x27;app2/button));</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">RemoteButton</span> = <span class="title class_">React</span>.<span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;app2/button));</span></span><br></pre></td></tr></table></figure>
 <p>其中， import url 中的 app2 对应 remotes 配置项中的 key 值。<br>value 为 remote 应用的对外输出及url，**格式必须严格遵循: ‘name@url’**。其中， name 对应 remote 应用中 library 中的 name 配置项， url 对应 remote 应用中 remoteEnter 文件的链接。</p>
 </li>
 <li><p><strong>shared</strong><br>shared 配置项指示 remote 应用的输出内容和 host 应用可以共用哪些依赖。 <strong>shared 要想生效，则 host 应用和 remote 应用的 shared 配置的依赖要一致</strong>。</p>
@@ -416,7 +419,7 @@
   </entry>
   <entry>
     <title>nginx安装</title>
-    <url>/blog/2022/09/01/record/nginx%E5%AE%89%E8%A3%85/</url>
+    <url>/blog/2023/01/12/record/nginx%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建nginx用户</span><br><span class="line">groupadd nginx</span><br><span class="line">useradd nginx -g nginx -s /sbin/nologin -M</span><br><span class="line"></span><br><span class="line"># 可选安装nginx-http-concat</span><br><span class="line">cd /opt</span><br><span class="line">git clone https://github.com/alibaba/nginx-http-concat.git</span><br><span class="line">vi nginx-http-concat/ngx_http_concat_module.c</span><br><span class="line"></span><br><span class="line"># 安装</span><br><span class="line">yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel libxml2 libxml2-dev libxslt-devel gd-devel perl-devel perl-ExtUtils-Embed</span><br><span class="line">cd /usr/local/src/</span><br><span class="line">wget https://nginx.org/download/nginx-1.12.2.tar.gz</span><br><span class="line">tar zxf nginx-1.12.2.tar.gz</span><br><span class="line">cd nginx-1.12.2/</span><br><span class="line"># ./configure --prefix=/opt/nginx --with-pcre --with-http_ssl_module --user=nginx --group=nginx</span><br><span class="line">./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-pcre --with-http_ssl_module --with-http_v2_module --with-compat --with-http_secure_link_module --with-http_realip_module --with-file-aio --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_stub_status_module --with-http_auth_request_module --with-http_slice_module --with-stream --with-stream=dynamic --with-stream_ssl_module --with-stream_realip_module --with-stream_ssl_preread_module --with-threads --with-http_xslt_module=dynamic --with-http_image_filter_module=dynamic --with-http_perl_module=dynamic</span><br><span class="line"># nginx-http-concat</span><br><span class="line">./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-pcre --with-http_ssl_module --with-http_v2_module --with-compat --with-http_secure_link_module --with-http_realip_module --with-file-aio --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_stub_status_module --with-http_auth_request_module --with-http_slice_module --with-stream --with-stream=dynamic --with-stream_ssl_module --with-stream_realip_module --with-stream_ssl_preread_module --with-threads --with-http_xslt_module=dynamic --with-http_image_filter_module=dynamic --with-http_perl_module=dynamic --add-module=/opt/nginx-http-concat</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">mkdir -p /data/logs/nginx</span><br><span class="line"># 可选</span><br><span class="line">chmod u+s /opt/nginx/sbin/nginx</span><br><span class="line">mkdir -p /opt/nginx/conf/conf.d</span><br><span class="line">chmod 777 /opt/nginx/conf/conf.d</span><br></pre></td></tr></table></figure>
 
 
