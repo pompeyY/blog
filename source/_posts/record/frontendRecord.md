@@ -161,3 +161,7 @@ server {
 ## eventloop
 > [参考链接 https://juejin.im/post/5c9a43175188252d876e5903](https://juejin.im/post/5c9a43175188252d876e5903)
 
+## clash OneDrive同步
+```
+  mklink /D "C:\Users\pompey\.config\clash" "D:\OneDrive\clash\data"
+```
